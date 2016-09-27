@@ -14,18 +14,21 @@
 
 void	ft_putnbr_fd(int nb, int fd)
 {
-	if (nb < 0)
+	long long n;
+
+	n = (long long)nb;
+	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		nb = nb * -1;
+		n = n * -1;
 	}
-	if (0 <= nb && nb < 10)
+	if (0 <= n && n < 10)
 	{
-		ft_putchar_fd(nb + '0', fd);
+		ft_putchar_fd(n + '0', fd);
 	}
 	else
 	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putnbr_fd(nb % 10, fd);
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
 	}
 }

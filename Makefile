@@ -17,7 +17,8 @@ SRCS = ft_atoi.c ft_bzero.c ft_memalloc.c ft_memccpy.c \
 	ft_strmapi.c ft_strncmp.c ft_strlen.c \
 	ft_strrchr.c ft_strsplit.c ft_strsub.c \
 	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
-	
+	ft_isprint.c ft_toupper.c ft_tolower.c ft_strdel.c \
+
 
 OBJ = $(SRCS:.c=.o)
 
@@ -32,6 +33,7 @@ $(OBJ): $(SRCS)
 
 $(NAME): $(OBJ)
 	@ar -rcs $@ $(OBJ)
+	ranlib $(NAME)
 
 clean:
 	@rm -f $(OBJ)

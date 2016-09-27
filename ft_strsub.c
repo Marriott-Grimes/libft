@@ -20,5 +20,6 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	if (!answer)
 		return (NULL);
 	answer = ft_strncpy(answer, &s[start], len);
+	answer[len] = 0;
 	return (answer);
 }

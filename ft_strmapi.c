@@ -18,7 +18,7 @@ char		*ft_strmapi(const char *tab, char (*f)(unsigned int, char))
 	int		i;
 
 	i = 0;
-	answer = (char*)malloc(sizeof(char) * ft_strlen(tab));
+	answer = (char*)malloc(sizeof(char) * (ft_strlen(tab) + 1));
 	if (!answer)
 		return (NULL);
 	while (tab[i])
@@ -26,5 +26,6 @@ char		*ft_strmapi(const char *tab, char (*f)(unsigned int, char))
 		answer[i] = f(i, tab[i]);
 		i++;
 	}
+	answer[i] = 0;
 	return (answer);
 }
