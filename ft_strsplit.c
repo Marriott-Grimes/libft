@@ -63,7 +63,7 @@ char		**ft_strsplit(const char *str, char c)
 	i = 0;
 	j = 0;
 	word_count = get_word_count(str, c);
-	ans = (char**)malloc(sizeof(char*) * (word_count + 1));
+	ans = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (ans == NULL)
 		return (NULL);
 	ans[word_count] = NULL;

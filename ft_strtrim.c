@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgrimes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/25 12:50:59 by mgrimes           #+#    #+#             */
-/*   Updated: 2016/09/25 12:51:14 by mgrimes          ###   ########.fr       */
+/*   Created: 2016/09/27 14:14:26 by mgrimes           #+#    #+#             */
+/*   Updated: 2016/09/27 14:14:27 by mgrimes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#define ISWHITESPACE(c) (c == ' ' || c == '\n' || c == '\t')
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+static int	ft_max(int a, int b)
 {
-	size_t			i;
-	unsigned char	*dest;
-	unsigned char	*source;
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+char	*ft_strtrim(const char *s)
+{
+	int		i;
+	int		j;
+	char	*str;
 
 	i = 0;
-	dest = (unsigned char *)dst;
-	source = (unsigned char *)src;
-	if (dest < source)
+	j = ft_max(ft_strlen(s) - 1, 0);
+	while (ISWHITESPACE(s[i]))
+		i++;
+	while (ISWHITESPACE(s[j]) && j >= 0)
+		j--;
+	if (i < j)
 	{
-		while (i < len)
-		{
-			dest[i] = source[i];
-			i++;
-		}
+		str = ft_strnew(j - i + 1);
+		str = ft_strncpy(str, &s[i], j - i + 1);
+		return (str);
 	}
 	else
-	{
-		while (i < len)
-		{
-			dest[len - i - 1] = source[len - i - 1];
-			i++;
-		}
-	}
-	return (dst);
+		return (ft_strnew(0));
 }
