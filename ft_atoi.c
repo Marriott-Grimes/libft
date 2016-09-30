@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-#define WHITE(c) (c==' '||c == '\n'||c == '\t'||c == '\v'||c =='\f'||c=='\r')
-
 int				ft_atoi(char *str)
 {
 	long long	answer;

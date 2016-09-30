@@ -18,9 +18,7 @@ static int	find_next_word(const char *str, char c)
 
 	j = 0;
 	while (str[j] == c && str[j])
-	{
 		j++;
-	}
 	return (j);
 }
 
@@ -70,7 +68,7 @@ char		**ft_strsplit(const char *str, char c)
 	while (j < word_count)
 	{
 		i += find_next_word(&str[i], c);
-		ans[j] = (char*)malloc(find_end_word(&str[i], c) + 1);
+		ans[j] = ft_strnew(find_end_word(&str[i], c));
 		ans[j] = ft_strncpy(ans[j], &str[i], find_end_word(&str[i], c));
 		i += find_end_word(&str[i], c);
 		j++;

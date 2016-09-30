@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-#define ISWHITESPACE(c) (c == ' ' || c == '\n' || c == '\t')
-
 static int	ft_max(int a, int b)
 {
 	if (a > b)

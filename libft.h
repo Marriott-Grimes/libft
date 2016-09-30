@@ -6,7 +6,7 @@
 /*   By: mgrimes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 10:18:13 by mgrimes           #+#    #+#             */
-/*   Updated: 2016/09/29 18:20:35 by mgrimes          ###   ########.fr       */
+/*   Updated: 2016/09/29 21:12:53 by mgrimes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define WHITE(c) (c==' '||c == '\n'||c == '\t'||c == '\v'||c =='\f'||c=='\r')
+# define ISWHITESPACE(c) (c == ' ' || c == '\n' || c == '\t')
 
 void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
