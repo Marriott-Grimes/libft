@@ -28,5 +28,5 @@ char	*ft_strrev(char *dest, const char *src)
 		j++;
 	}
 	dest[j] = 0;
-	return(dest);
+	return (dest);
 }

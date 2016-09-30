@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
 #define ISWHITESPACE(c) (c == ' ' || c == '\n' || c == '\t')
 
 static int	ft_max(int a, int b)
@@ -20,7 +21,7 @@ static int	ft_max(int a, int b)
 	return (b);
 }
 
-char	*ft_strtrim(const char *s)
+char		*ft_strtrim(const char *s)
 {
 	int		i;
 	int		j;
@@ -32,9 +33,11 @@ char	*ft_strtrim(const char *s)
 		i++;
 	while (ISWHITESPACE(s[j]) && j >= 0)
 		j--;
-	if (i < j)
+	if (i < j || ft_strlen(s) == 1)
 	{
 		str = ft_strnew(j - i + 1);
+		if (!str)
+			return (NULL);
 		str = ft_strncpy(str, &s[i], j - i + 1);
 		return (str);
 	}

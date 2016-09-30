@@ -53,5 +53,7 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	ft_strdel(char **as);
+int		ft_atoi(char *str);
+char	*ft_strrev(char *dest, const char *src);
 
 #endif

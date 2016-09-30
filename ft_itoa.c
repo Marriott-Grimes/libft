@@ -6,74 +6,60 @@
 /*   By: mgrimes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:11:20 by mgrimes           #+#    #+#             */
-/*   Updated: 2016/09/27 18:11:22 by mgrimes          ###   ########.fr       */
+/*   Updated: 2016/09/29 16:53:05 by mgrimes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		extra_char(int sign)
+static char		*copied(char *temp, int n)
 {
-	if (sign == -1)
-		return (1);
-	return (0);
-}
+	char *ans;
 
-static char		*special_cases(int n)
-{
-	char		*ans;
-
-	if (n == -2147483648)
+	if (n >= 0)
 	{
-		ans = ft_strnew(11);
-		ans = ft_strcpy(ans,"-2147483648");
-		return (ans);
-	}
-	if (n == 0)
-	{
-		ans = ft_strnew(1);
-		ans = ft_strcpy(ans,"0");
-		return (ans);
+		while (n != 0)
+		{
+			temp--;
+			*temp = (n % 10) + '0';
+			n /= 10;
+		}
 	}
 	else
-		return (NULL);
+	{
+		while (n != 0)
+		{
+			temp--;
+			*temp = '0' - (n % 10);
+			n /= 10;
+		}
+		temp--;
+		*temp = '-';
+	}
+	ans = ft_strnew(ft_strlen(temp));
+	ans = ft_strcpy(ans, temp);
+	return (ans);
 }
 
 char			*ft_itoa(int n)
 {
-	char		*ans;
+	char		*need_to_free;
 	char		*temp;
-	char		*temp2;
-	int			i;
-	int			sign;
-	int			size;
-	
-	i = 0;
-	sign = 1;
-	if (n == -2147483648 || n == 0)
-		return (special_cases(n));
-	temp = ft_strnew(10);
-	if (n < 0)
+	char		*ans;
+
+	if (n == 0)
 	{
-		sign = -1;
-		n *= -1;
+		ans = ft_strnew(1);
+		if (!ans)
+			return (NULL);
+		ans[0] = '0';
+		return (ans);
 	}
-	while (n > 0)
-	{
-		temp[i] = n % 10;
-		n /= 10;
-		i++;
-	}
-	size = i + extra_char(sign);
-	ans = ft_strnew(size);
-	i = 0;
-	if (sign == -1)
-	{
-		ans[0] = '-';
-		i++;
-	}
-	temp2 = &ans[i];
-	temp2 = ft_strrev(temp2,temp);
-	free(temp);
+	need_to_free = ft_strnew(11);
+	if (!need_to_free)
+		return (NULL);
+	temp = need_to_free + 11;
+	ans = copied(temp, n);
+	free(need_to_free);
 	return (ans);
 }
