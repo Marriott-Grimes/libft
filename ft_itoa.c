@@ -6,7 +6,7 @@
 /*   By: mgrimes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:11:20 by mgrimes           #+#    #+#             */
-/*   Updated: 2016/09/29 16:53:05 by mgrimes          ###   ########.fr       */
+/*   Updated: 2016/10/15 16:53:55 by mgrimes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static char		*copied(char *temp, int n)
 {
-	char *ans;
-
 	if (n >= 0)
 	{
 		while (n != 0)
@@ -36,9 +34,7 @@ static char		*copied(char *temp, int n)
 		temp--;
 		*temp = '-';
 	}
-	ans = ft_strnew(ft_strlen(temp));
-	ans = ft_strcpy(ans, temp);
-	return (ans);
+	return (temp);
 }
 
 char			*ft_itoa(int n)
